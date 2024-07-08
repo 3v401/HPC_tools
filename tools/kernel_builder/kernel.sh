@@ -1,9 +1,16 @@
 #!/bin/bash
 
 # These loaded modules correspond to HPC systems (center not mentioned) version 2024.
-module purge
-module load Stages/2024
-module load UserInstallations
+
+# export PROJECT=Type_your_project # Project you are working with
+
+ml --force purge
+jutil env activate -p $PROJECT
+cd $PROJECT
+export USERINSTALLATIONS=${PROJECT}/${USER}
+cd ${PROJECT}/${USER}
+ml --force purge
+ml Stages/2024 UserInstallations
 module load GCCcore/.12.3.0
 module load DWave/6.8.0
 
