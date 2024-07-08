@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "'${KERNEL_VENVS_DIR}/${KERNEL_NAME}/kernel.sh'",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+  ],
+  "display_name": "'${KERNEL_NAME}'",
+  "language": "python"
+}
