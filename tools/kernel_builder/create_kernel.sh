@@ -107,6 +107,11 @@ fi
 #                                             Create Jupyter kernel .sh
 ##################################################################################################################
 
+# This script sets up the environment necessary to run the Jupyter kernel
+# Ensure all modules and environment variables are loaded to replicate the environment in previous steps
+# Execute ipykernel to start the kernel process with the provided arguments ('$@')
+
+
 echo '#!/bin/bash'"
 
 module purge
