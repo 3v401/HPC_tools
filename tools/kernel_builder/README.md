@@ -1,3 +1,9 @@
+A kernel is the core component of an operating system (OS). It acts as a bridge between the hardware of a computer and the software applications that run on it. The kernel is responsible for managing system resources such as CPU, memory and I/O devices.
+
+In the context of Jupyter Notebooks, a kernel is the computational engine that executes the code contained in the notebook cells. Different kernels can support different programming languages (e.g., Python, R, Julia). In our case we will use Python.
+
+A kernel for a Jupyter Notebook connected to an HPC system allows the notebook to use the computational resources of the HPC environment with a Jupyter Notebook interface instead of using a Linux/UNIX terminal.
+
 In this repository we will develop a basic Jupyter Notebook kernel for an HPC (High-Performance Computing) system. In this process we will define Kernel specifications, communication protocols, resource management and more.
 
 Kernel Specification:
