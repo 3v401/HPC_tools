@@ -20,8 +20,18 @@ modules=()
 # Loop to read each module name and store it in the array
 for (( i=1; i<=num_modules; i++ )); do
     read -p "Enter module name $i: " module
+    modules+=("$module")
     eval "module$i=\"$module\""
 done
+
+# Construct the MODULE_LIST variable
+MODULE_LIST=""
+for (( i=0; i<${#modules[@]}; i++ )); do
+    MODULE_LIST+="${modules[$i]} "
+done
+
+# Output the MODULE_LIST for verification
+echo "MODULE_LIST: $MODULE_LIST"
 
 # Display the collected module names
 echo "Modules to be loaded:"
@@ -149,7 +159,7 @@ fi
 # Save the script and make it executable. Output the contents to verify the script
 
 
-echo '#!/bin/bash
+echo '#!/bin/bash'"
 
 module purge
 # cslqip is my project, use yours.
@@ -160,10 +170,10 @@ cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
 
-for (( i=1; i<=num_modules; i++ )); do
-    eval "module=\$module$i"
-    module load "$module"
-done
+#module load GCCcore/.12.3.0
+#module load DWave/6.8.0
+
+module load ${MODULE_LIST}
 
 # Load extra modules you need for your kernel (as you did in step 1.2)
 #module load <module you need>
@@ -172,13 +182,10 @@ done
 source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
 
 # Ensure python packages installed in the virtual environment are always prefered
-export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:"${PYTHONPATH}"
+export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:"'${PYTHONPATH}'"
 
-exec python -m ipykernel "$@"' > ${VIRTUAL_ENV}/kernel.sh
+exec python -m ipykernel "'$@' > ${VIRTUAL_ENV}/kernel.sh
 chmod +x ${VIRTUAL_ENV}/kernel.sh
-
-# Check if the script has been correctly scripted:
-cat ${VIRTUAL_ENV}/kernel.sh
 
 
 ##################################################################################################################
