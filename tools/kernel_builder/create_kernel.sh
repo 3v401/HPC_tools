@@ -45,16 +45,22 @@ if [ -d "${KERNEL_SPECS_DIR}/${KERNEL_NAME}" ]; then
   echo "       Rename kernel name or remove directory."
 fi
 
+# Confirm the final path where the kernel will be installed:
 echo ${KERNEL_SPECS_DIR}/${KERNEL_NAME}
 
+# Define a specific directory path for storing the virtual environments of the kernels
 export KERNEL_VENVS_DIR=${PROJECT}/${USER}/jupyter/kernels
 
+# Create directory. The -p option creates the directory and any necessary parent directories if they do not already exist:
 mkdir -p ${KERNEL_VENVS_DIR}
+
+# Check the directory's permissions to ensure that project partners have the necessary read and execute permissions:
 if [ "${KERNEL_TYPE}" != "private" ] && [ "${KERNEL_TYPE}" != "other" ]; then
   echo "Please check the permissions and ensure your project partners have read/execute permissions:"
   namei -l ${KERNEL_VENVS_DIR}
 fi
 
+# Output directory path. List its contents to verify the directory was created and is accessible.
 echo ${KERNEL_VENVS_DIR}
 ls -lt ${KERNEL_VENVS_DIR}
 
