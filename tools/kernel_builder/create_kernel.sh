@@ -13,9 +13,31 @@ else
   tr ':' '\n' <<< "$JUPYTER_PATH"
 fi
 
+# Set kernel type and path:
 export KERNEL_TYPE=private # private, project or other
 export KERNEL_SPECS_PREFIX=${HOME}/.local
 
+# Set the appropriate directory path based on the selected kernel type and verify that the directory exists:
+if [ "${KERNEL_TYPE}" == "project" ]; then
+  export KERNEL_SPECS_PREFIX=${PROJECT}/.local
+  echo "project kernel"
+elif [ "${KERNEL_TYPE}" == "private" ]; then
+  export KERNEL_SPECS_PREFIX=${HOME}/.local
+  echo "private kernel"
+else
+  if [ ! -d "$KERNEL_SPECS_PREFIX" ]; then
+    echo "ERROR: please create directory $KERNEL_SPECS_PREFIX"
+  fi
+  echo "other kernel"
+fi
+
+export KERNEL_SPECS_DIR=${KERNEL_SPECS_PREFIX}/share/jupyter/kernels
+
+# Ensure that the kernel name is unique to avoid conflicts with existing kernels:
+if [ -d "${KERNEL_SPECS_DIR}/${KERNEL_NAME}" ]; then
+  echo "ERROR: Kernel already exists in ${KERNEL_SPECS_DIR}/${KERNEL_NAME}"
+  echo "       Rename kernel name or remove directory."
+fi
 export KERNEL_SPECS_DIR=${KERNEL_SPECS_PREFIX}/share/jupyter/kernels
 
 if [ -d "${KERNEL_SPECS_DIR}/${KERNEL_NAME}" ]; then
