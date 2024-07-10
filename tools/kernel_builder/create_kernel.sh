@@ -10,7 +10,9 @@ PROJECT_NAME=$2
 KERNEL_TYPE_CATEGORY=$3
 
 # Ask for the number of modules
-read -p "How many modules are you going to introduce: " num_modules
+echo "Minimum number of modules: 2. Toolchain + minimum module (e.g., GCCcore/.12.3.0 + DWave/6.8.0)."
+echo "How many modules are you going to introduce? Stages/202X, UserInstallations, EasyBuild/X.X.X do not count."
+read -p "Introduce the number of modules: " num_modules
 
 # Initialize an array to store the module names
 modules=()
@@ -18,13 +20,13 @@ modules=()
 # Loop to read each module name and store it in the array
 for (( i=1; i<=num_modules; i++ )); do
     read -p "Enter module name $i: " module
-    modules+=("$module")
+    eval "module$i=\"$module\""
 done
 
 # Display the collected module names
 echo "Modules to be loaded:"
-for module in "${modules[@]}"; do
-    echo "$module"
+for (( i=1; i<=num_modules; i++ )); do
+    eval "echo module$i: \${module$i}"
 done
 
 # Create a unique kernel name using the username of the current user, ensuring easy identification.
