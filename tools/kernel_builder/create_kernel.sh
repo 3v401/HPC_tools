@@ -148,6 +148,7 @@ cat ${VIRTUAL_ENV}/kernel.sh
 ##################################################################################################################
 
 # Create Jupyter Kernel Configuration Directory and Files
+# This is done to register the kernel with Jupyter so that it appears as an option when creating new notebooks.
 
 # Install kernel for Jupyter:
 python -m ipykernel install --name=${KERNEL_NAME} --prefix ${VIRTUAL_ENV}
@@ -159,11 +160,26 @@ export VIRTUAL_ENV_KERNELS=${VIRTUAL_ENV}/share/jupyter/kernels
 # affects the performance and there's a need to revert these changes:
 mv ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json.orig
 
+echo '{
+  "argv": [
+    "'${KERNEL_VENVS_DIR}/${KERNEL_NAME}/kernel.sh'",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+  ],
+  "display_name": "'${KERNEL_NAME}'",
+  "language": "python"
+}' > ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json
+
+cat ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json
+
+# Directory where Jupyter looks for kernel specifications 
 mkdir -p ${KERNEL_SPECS_DIR}
 cd ${KERNEL_SPECS_DIR}
+# Creates symbolic link. This link allows Jupyter to locate and use the kernel configuration stored:
 ln -s ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME} .
 
 echo -e "\n\nThe new kernel '${KERNEL_NAME}' was added to your kernels in '${KERNEL_SPECS_DIR}/'\n"
+# List the contents to verify the symbolic link
 ls ${KERNEL_SPECS_DIR}
-
-###
