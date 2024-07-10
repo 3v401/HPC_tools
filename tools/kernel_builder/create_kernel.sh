@@ -110,6 +110,8 @@ fi
 # This script sets up the environment necessary to run the Jupyter kernel
 # Ensure all modules and environment variables are loaded to replicate the environment in previous steps
 # Execute ipykernel to start the kernel process with the provided arguments ('$@')
+# "$@" is a powerful shell construct that allows scripts and functions to handle and pass on multiple arguments dynamically
+# Save the script and make it executable. Output the contents to verify the script
 
 
 echo '#!/bin/bash'"
