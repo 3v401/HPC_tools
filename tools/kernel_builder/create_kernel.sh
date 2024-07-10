@@ -104,8 +104,12 @@ export USERINSTALLATIONS=${PROJECT}/${USER}
 cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
-module load GCCcore/.12.3.0
-module load DWave/6.8.0
+
+for (( i=1; i<=num_modules; i++ )); do
+    eval "module=\$module$i"
+    echo "Loading module: $module"
+    module load "$module"
+done
 
 # Check if the directory for the virtual environment already exists to prevent overwriting or conflicts.
 if [ -d "${KERNEL_VENVS_DIR}/${KERNEL_NAME}" ]; then
@@ -155,8 +159,11 @@ export USERINSTALLATIONS=${PROJECT}/${USER}
 cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
-module load GCCcore/.12.3.0
-module load DWave/6.8.0
+
+for (( i=1; i<=num_modules; i++ )); do
+    eval 'module=\$module$i'
+    module load '$module'
+done
 
 # Load extra modules you need for your kernel (as you did in step 1.2)
 #module load <module you need>
