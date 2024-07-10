@@ -160,10 +160,8 @@ cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
 
-for (( i=1; i<=num_modules; i++ )); do
-    eval "'module=\$module$i'"
-    module load "'$module'"
-done
+module load GCCcore/.12.3.0
+module load DWave/6.8.0
 
 # Load extra modules you need for your kernel (as you did in step 1.2)
 #module load <module you need>
