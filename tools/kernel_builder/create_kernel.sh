@@ -161,8 +161,8 @@ ml --force purge
 ml Stages/2024 UserInstallations
 
 for (( i=1; i<=num_modules; i++ )); do
-    eval 'module=\$module$i'
-    module load '$module'
+    eval "'module=\$module$i'"
+    module load "'$module'"
 done
 
 # Load extra modules you need for your kernel (as you did in step 1.2)
