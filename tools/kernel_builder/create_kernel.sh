@@ -1,11 +1,12 @@
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 KERNEL_SUFFIX_NAME PROJECT_NAME"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 KERNEL_SUFFIX_NAME PROJECT_NAME KERNEL_TYPE_CATEGORY"
     exit 1
 fi
 
 # Assign arguments to variables
 KERNEL_SUFFIX_NAME=$1
 PROJECT_NAME=$2
+KERNEL_TYPE_CATEGORY=$3
 
 # Create a unique kernel name using the username of the current user, ensuring easy identification.
 KERNEL_NAME=${USER}_${KERNEL_SUFFIX_NAME}
@@ -23,7 +24,7 @@ else
 fi
 
 # Set kernel type and path:
-export KERNEL_TYPE=private # private, project or other
+export KERNEL_TYPE=${KERNEL_TYPE_CATEGORY} # private, project or other
 export KERNEL_SPECS_PREFIX=${HOME}/.local
 
 # Set the appropriate directory path based on the selected kernel type and verify that the directory exists:
