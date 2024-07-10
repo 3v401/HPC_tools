@@ -5,7 +5,8 @@ KERNEL_NAME=${USER}_kernel
 export KERNEL_NAME=$(echo "${KERNEL_NAME}" | awk '{print tolower($0)}')
 echo ${KERNEL_NAME}
 
-echo "jupyter search paths for kernels-directories"
+# Search paths for Jupyter kernel directories:
+# Check if the JUPYTER_PATH environment variable is empty. 1: Print the default Jupyter search path. 0: Print each path on a new line.
 if [ -z $JUPYTER_PATH ]; then
   echo "$HOME/.local/share/jupyter"
 else
