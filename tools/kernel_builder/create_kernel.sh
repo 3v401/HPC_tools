@@ -1,4 +1,5 @@
 if [ "$#" -ne 3 ]; then
+    echo "You introduced the incorrect arguments:"
     echo "Usage: $0 KERNEL_SUFFIX_NAME PROJECT_NAME KERNEL_TYPE_CATEGORY"
     exit 1
 fi
