@@ -65,15 +65,16 @@ echo ${KERNEL_VENVS_DIR}
 ls -lt ${KERNEL_VENVS_DIR}
 
 ###
-
+# Check if the directory for the virtual environment already exists to prevent overwriting or conflicts.
 if [ -d "${KERNEL_VENVS_DIR}/${KERNEL_NAME}" ]; then
   echo "ERROR: Directory for virtual environment already ${KERNEL_VENVS_DIR}/${KERNEL_NAME}"
   echo "       Rename kernel name or remove directory."
 else
   python -m venv --system-site-packages ${KERNEL_VENVS_DIR}/${KERNEL_NAME}
   source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
+  # Set PYTHONPATH to prioritize packages installed in this virtual environment.
   export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:${PYTHONPATH}
-  echo ${VIRTUAL_ENV} # double check
+  echo ${VIRTUAL_ENV}
 fi
 
 ###
