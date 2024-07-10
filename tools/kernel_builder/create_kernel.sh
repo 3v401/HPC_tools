@@ -1,5 +1,14 @@
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 KERNEL_SUFFIX_NAME PROJECT_NAME"
+    exit 1
+fi
+
+# Assign arguments to variables
+KERNEL_SUFFIX_NAME=$1
+PROJECT_NAME=$2
+
 # Create a unique kernel name using the username of the current user, ensuring easy identification.
-KERNEL_NAME=${USER}_kernel
+KERNEL_NAME=${USER}_${KERNEL_SUFFIX_NAME}
 
 # Standardize the kernel name to lowercase to avoid case sensitivity issues:
 export KERNEL_NAME=$(echo "${KERNEL_NAME}" | awk '{print tolower($0)}')
@@ -67,7 +76,7 @@ ls -lt ${KERNEL_VENVS_DIR}
 # Load the required modules for your kernel
 module purge
 # 'cslqip' is my project, use yours.
-jutil env activate -p cslqip
+jutil env activate -p $PROJECT_NAME
 cd $PROJECT
 export USERINSTALLATIONS=${PROJECT}/${USER}
 cd ${PROJECT}/${USER}
@@ -118,7 +127,7 @@ echo '#!/bin/bash'"
 
 module purge
 # 'cslqip' is my project, use yours.
-jutil env activate -p cslqip
+jutil env activate -p $PROJECT_NAME
 cd $PROJECT
 export USERINSTALLATIONS=${PROJECT}/${USER}
 cd ${PROJECT}/${USER}
