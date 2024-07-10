@@ -149,10 +149,10 @@ fi
 # Save the script and make it executable. Output the contents to verify the script
 
 
-echo '#!/bin/bash'"
+echo '#!/bin/bash
 
 module purge
-# 'cslqip' is my project, use yours.
+# cslqip is my project, use yours.
 jutil env activate -p $PROJECT_NAME
 cd $PROJECT
 export USERINSTALLATIONS=${PROJECT}/${USER}
@@ -160,8 +160,10 @@ cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
 
-module load GCCcore/.12.3.0
-module load DWave/6.8.0
+for (( i=1; i<=num_modules; i++ )); do
+    eval "module=\$module$i"
+    module load "$module"
+done
 
 # Load extra modules you need for your kernel (as you did in step 1.2)
 #module load <module you need>
@@ -170,9 +172,9 @@ module load DWave/6.8.0
 source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
 
 # Ensure python packages installed in the virtual environment are always prefered
-export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:"'${PYTHONPATH}'"
+export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:"${PYTHONPATH}"
 
-exec python -m ipykernel "'$@' > ${VIRTUAL_ENV}/kernel.sh
+exec python -m ipykernel "$@"' > ${VIRTUAL_ENV}/kernel.sh
 chmod +x ${VIRTUAL_ENV}/kernel.sh
 
 # Check if the script has been correctly scripted:
