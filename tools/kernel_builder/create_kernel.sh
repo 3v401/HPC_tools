@@ -1,5 +1,7 @@
+# Create a unique kernel name using the username of the current user, ensuring easy identification.
 KERNEL_NAME=${USER}_kernel
 
+# Standardize the kernel name to lowercase to avoid case sensitivity issues:
 export KERNEL_NAME=$(echo "${KERNEL_NAME}" | awk '{print tolower($0)}')
 echo ${KERNEL_NAME}
 
