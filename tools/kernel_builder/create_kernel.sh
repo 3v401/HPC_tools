@@ -169,14 +169,7 @@ export USERINSTALLATIONS=${PROJECT}/${USER}
 cd ${PROJECT}/${USER}
 ml --force purge
 ml Stages/2024 UserInstallations
-
-#module load GCCcore/.12.3.0
-#module load DWave/6.8.0
-
 module load ${MODULE_LIST}
-
-# Load extra modules you need for your kernel (as you did in step 1.2)
-#module load <module you need>
 
 # Activate your Python virtual environment
 source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
