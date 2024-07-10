@@ -64,7 +64,18 @@ fi
 echo ${KERNEL_VENVS_DIR}
 ls -lt ${KERNEL_VENVS_DIR}
 
-###
+# Load the required modules for your kernel
+module purge
+# 'cslqip' is my project, use yours.
+jutil env activate -p cslqip
+cd $PROJECT
+export USERINSTALLATIONS=${PROJECT}/${USER}
+cd ${PROJECT}/${USER}
+ml --force purge
+ml Stages/2024 UserInstallations
+module load GCCcore/.12.3.0
+module load DWave/6.8.0
+
 # Check if the directory for the virtual environment already exists to prevent overwriting or conflicts.
 if [ -d "${KERNEL_VENVS_DIR}/${KERNEL_NAME}" ]; then
   echo "ERROR: Directory for virtual environment already ${KERNEL_VENVS_DIR}/${KERNEL_NAME}"
@@ -74,21 +85,60 @@ else
   source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
   # Set PYTHONPATH to prioritize packages installed in this virtual environment.
   export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:${PYTHONPATH}
+  # output the path of VIRTUAL_ENV for verification (this variable is defined after the creation and activation of the environment)
   echo ${VIRTUAL_ENV}
 fi
 
-###
-
+# Check location of pip (it must be in your activated environment)
 which pip
 if [ -z "${VIRTUAL_ENV}" ]; then
   echo "ERROR: Virtual environment not successfully initialized."
 else
+  # If environment activated install ipykernel package for communication between Python environment and Jupyter
   pip install --ignore-installed ipykernel
-  ls ${VIRTUAL_ENV}/lib/python3.11/site-packages/ # double check
+  # List packages installed to verify instllation
+  ls ${VIRTUAL_ENV}/lib/python3.11/site-packages/
 fi
 
-#sh
-###
+# Any additional library you may need for your kernel:
+# pip install <python-package you need>
+
+##################################################################################################################
+#                                             Create Jupyter kernel .sh
+##################################################################################################################
+
+echo '#!/bin/bash'"
+
+module purge
+# 'cslqip' is my project, use yours.
+jutil env activate -p cslqip
+cd $PROJECT
+export USERINSTALLATIONS=${PROJECT}/${USER}
+cd ${PROJECT}/${USER}
+ml --force purge
+ml Stages/2024 UserInstallations
+module load GCCcore/.12.3.0
+module load DWave/6.8.0
+
+# Load extra modules you need for your kernel (as you did in step 1.2)
+#module load <module you need>
+
+# Activate your Python virtual environment
+source ${KERNEL_VENVS_DIR}/${KERNEL_NAME}/bin/activate
+
+# Ensure python packages installed in the virtual environment are always prefered
+export PYTHONPATH=${VIRTUAL_ENV}/lib/python3.11/site-packages:"'${PYTHONPATH}'"
+
+exec python -m ipykernel "'$@' > ${VIRTUAL_ENV}/kernel.sh
+chmod +x ${VIRTUAL_ENV}/kernel.sh
+
+# Check if the script has been correctly scripted:
+cat ${VIRTUAL_ENV}/kernel.sh
+
+
+##################################################################################################################
+#                                             Create Jupyter kernel .json
+##################################################################################################################
 
 python -m ipykernel install --name=${KERNEL_NAME} --prefix ${VIRTUAL_ENV}
 export VIRTUAL_ENV_KERNELS=${VIRTUAL_ENV}/share/jupyter/kernels
