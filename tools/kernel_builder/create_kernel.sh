@@ -9,6 +9,24 @@ KERNEL_SUFFIX_NAME=$1
 PROJECT_NAME=$2
 KERNEL_TYPE_CATEGORY=$3
 
+# Ask for the number of modules
+read -p "How many modules are you going to introduce: " num_modules
+
+# Initialize an array to store the module names
+modules=()
+
+# Loop to read each module name and store it in the array
+for (( i=1; i<=num_modules; i++ )); do
+    read -p "Enter module name $i: " module
+    modules+=("$module")
+done
+
+# Display the collected module names
+echo "Modules to be loaded:"
+for module in "${modules[@]}"; do
+    echo "$module"
+done
+
 # Create a unique kernel name using the username of the current user, ensuring easy identification.
 KERNEL_NAME=${USER}_${KERNEL_SUFFIX_NAME}
 
