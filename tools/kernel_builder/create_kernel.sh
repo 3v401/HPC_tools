@@ -147,15 +147,17 @@ cat ${VIRTUAL_ENV}/kernel.sh
 #                                             Create Jupyter kernel .json
 ##################################################################################################################
 
+# Create Jupyter Kernel Configuration Directory and Files
+
+# Install kernel for Jupyter:
 python -m ipykernel install --name=${KERNEL_NAME} --prefix ${VIRTUAL_ENV}
+#  VIRTUAL_ENV_KERNELS is where Jupyter looks for kernel configurations and specifications:
 export VIRTUAL_ENV_KERNELS=${VIRTUAL_ENV}/share/jupyter/kernels
 
 ###
-
+# Backup to ensure if any modification made to the kernel.json file in subsequent steps
+# affects the performance and there's a need to revert these changes:
 mv ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json ${VIRTUAL_ENV_KERNELS}/${KERNEL_NAME}/kernel.json.orig
-
-#json
-###
 
 mkdir -p ${KERNEL_SPECS_DIR}
 cd ${KERNEL_SPECS_DIR}
