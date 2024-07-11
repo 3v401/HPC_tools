@@ -16,8 +16,20 @@ In this repository we will develop a basic Jupyter Notebook kernel for an HPC (H
 
 #### Load a kernel for DWave
 
-![alt text](URL)
-Resource Management:
+In this example, we'll develop a kernel for DWave/6.8.0. DWave/6.8.0 is a module I created using EasyBuild for my HPC system. The module is compiled and tested, ready to use. We'll activate the kernel to call this DWave module and run a simulation in a Jupyter notebook connected to our HPC.
+
+1. Usage of the script: ./create_kernel.sh KERNEL_SUFFIX_NAME PROJECT_NAME KERNEL_TYPE_CATEGORY
+
+`KERNEL_SUFFIX_NAME`: Suffix at the end of the kernel name
+`PROJECT_NAME`: Project you are assigned to
+`KERNEL_TYPE_CATEGORY`: private, project, or other
+
+2. Set toolchain and modules: In this case GCCcore/.12.3.0 and DWave/6.8.0
+3. Kernel creation:
+
+![alt text](pic1.png)
+
+Now, you can use this custom kernel in your Jupyter notebook for running simulations with the DWave/6.8.0 module.
 
 1. Handle job submissions and monitoring on the HPC cluster (using Slurm).
 2. 
