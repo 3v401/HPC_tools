@@ -53,5 +53,7 @@ Bingo! 🥳 You should see the outcome we were looking for: A GUI for the positi
 ##### Pathway of communication:
 
 You (developer) → kernel → Jupyter notebook → HPC system (cloud) → DWave annealer (cloud)
+
 *Computation*
+
 DWave annealer (cloud) → HPC system (cloud) → Jupyter notebook → kernel → You (developer)
