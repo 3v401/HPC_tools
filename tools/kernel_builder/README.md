@@ -21,7 +21,9 @@ In this example, we'll develop a kernel for DWave/6.8.0. DWave/6.8.0 is a module
 1. Usage of the script: ./create_kernel.sh KERNEL_SUFFIX_NAME PROJECT_NAME KERNEL_TYPE_CATEGORY
 
 `KERNEL_SUFFIX_NAME`: Suffix at the end of the kernel name
+
 `PROJECT_NAME`: Project you are assigned to
+
 `KERNEL_TYPE_CATEGORY`: private, project, or other
 
 2. Set toolchain and modules: In this case GCCcore/.12.3.0 and DWave/6.8.0
@@ -29,7 +31,27 @@ In this example, we'll develop a kernel for DWave/6.8.0. DWave/6.8.0 is a module
 
 ![alt text](pic1.png)
 
-Now, you can use this custom kernel in your Jupyter notebook for running simulations with the DWave/6.8.0 module.
+Now, you can use this custom kernel in your Jupyter notebook to run simulations for the DWave/6.8.0 module (this kernel was created for this specified module, if you want to try other module you must run the script again of other set of modules!).
 
-1. Handle job submissions and monitoring on the HPC cluster (using Slurm).
-2. 
+![alt text](pic2.png)
+
+#### Open Jupyter Notebook
+
+Open your Jupyter notebook connected to your HPC (Cloud environment). On the top right corner, when selecting the kernel, choose the newly created kernel (for me it is XXXX_kernel_test).
+
+![alt text](pic3.png)
+
+#### Run test code
+
+Use the following code to test the setup (you need your own token ID if you plan to use DWave for testing. Create an account at DWave Leap [here](https://cloud.dwavesys.com/leap/login/?next=/leap/)):
+
+![alt text](pic4.png)
+
+Bingo! You should see the outcome we were looking for: A GUI for the position of the qubits in the DWave quantum annealer using our kernel.
+
+
+##### Pathway of communication:
+
+You (developer) → kernel → Jupyter notebook → HPC system (cloud) → DWave annealer (cloud)
+*Computation*
+DWave annealer (cloud) → HPC system (cloud) → Jupyter notebook → kernel → You (developer)
