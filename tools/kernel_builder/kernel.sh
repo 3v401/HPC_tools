@@ -1,7 +1,7 @@
 echo '#!/bin/bash'"
 
 # Note: My outcome after creating kernel.sh won't be shared because of privacy/security reasons.
-# This is the kernel.sh part of create_kernel.sh.
+# This is the kernel.sh part of create_kernel.sh. Same for kernel.json.
 
 
 module purge
