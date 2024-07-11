@@ -47,7 +47,7 @@ Use the following code to test the setup (you need your own token ID if you plan
 
 ![alt text](pic4.png)
 
-Bingo! You should see the outcome we were looking for: A GUI for the position of the qubits in the DWave quantum annealer using our kernel.
+Bingo! 🥳 You should see the outcome we were looking for: A GUI for the position of the qubits in the DWave quantum annealer using our kernel.
 
 
 ##### Pathway of communication:
