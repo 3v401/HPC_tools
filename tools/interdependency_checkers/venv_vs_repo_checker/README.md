@@ -1,3 +1,7 @@
+Note:
+
+This script must be run in HPC systems in a path close to easybuild-repository. Otherwise it won' t work because when looking for repo_extensions, it looks for a specific path. It won't work locally. It must be run on the cloud and logged.
+
 venv list:
 
 (Python part)
