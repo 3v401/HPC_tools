@@ -36,11 +36,17 @@ Run this for all elements in dictionary_pip. After all elements are checked, ret
 
 extension name: version pip venv, version Stages/2024
 key1: value1, value2
+
 key2: value1, value2
+
 key3: value1
+
 key4: value1
+
 key5: value1, value2
+
 ...
+
 keyn: value1
 
 Count the number of keys in the dictionary such that value1!=value2. Those are the one which have incompatibility.
