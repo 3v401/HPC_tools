@@ -65,3 +65,19 @@ input:
   2. equal: return the dictionary in column format of keyn: value1==value2
   3. unique: return dictionary in column format for keyn: value1
   4. different: return dictionary in column format for keyn: value1!=value2
+
+Also generate an output.txt with the following extructure (to introduce into an google sheets excel)
+
+extension_name venv Stages/2024
+
+key1            value1 value2
+
+key2            value1 value2
+
+key3            value1
+
+key4            value1
+
+...
+
+keyn            value1
