@@ -66,7 +66,7 @@ input:
   3. unique: return dictionary in column format for keyn: value1
   4. different: return dictionary in column format for keyn: value1!=value2
 
-Also generate an output.txt with the following extructure (to introduce into an google sheets excel)
+Also generate an output.txt of the complete dictionary (selection "all") with the following extructure (to introduce into an google sheets excel and check it)
 
 extension_name venv Stages/2024
 
