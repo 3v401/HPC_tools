@@ -1,0 +1,11 @@
+#!/bin/bash -x
+#SBATCH --account=cswmanage
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=4
+#SBATCH --output=cpu-mpi-out.%j
+#SBATCH --error=cpu-mpi-err.%j
+#SBATCH --time=00:30:00
+#SBATCH --partition=
+
+module load
+srun
