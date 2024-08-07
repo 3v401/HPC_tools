@@ -1,0 +1,11 @@
+#!/bin/bash -x
+#SBATCH --account=XXXX # Account is private, introduce your own
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --output=cpu-out.%j
+#SBATCH --error=cpu-err.%j
+#SBATCH --time=00:30:00
+#SBATCH --partition=
+
+module load
+srun
