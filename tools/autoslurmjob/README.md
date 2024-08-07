@@ -14,10 +14,10 @@ In this example, we demonstrate running tests on the JURECA machine using the Qu
 
 2. **Input Required Modules**: The program will prompt us to introduce some modules. Here, we introduce the toolchain and the QuEST module:
 
-![alt text](pics/pic2.png)
-
 3. **System detection and Job Submission**: The program automatically detects the HPC system being used (JURECA), lists the partitions, edits the job scripts, and submits the jobs to the JURECA system. After waiting a few seconds, we can check that all files are correctly saved:
 
-![alt text](pics/pic3.png)
+![alt text](pics/pic2.png)
 
 4. **Check the Outcome**: As expected, the prompt shows 16 salutations because we set --ntasks=4 and --nodes-per-task=4.
+
+![alt text](pics/pic3.png)
