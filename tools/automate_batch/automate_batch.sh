@@ -12,3 +12,9 @@ wsgjsc: wsgjsctst (no batch system found)
 juqcs: jqctst01 (no batch system found)
 
 You loggin to each system with ssh -4. Run the .sh script with --user-account = cswmanage
+
+Partitions:
+jureca: dc-cpu-devel, dc-gpu-devel
+juwels-cluster: devel, develgpus
+juwels-booster: develbooster
+jusuf: batch, develgpus
