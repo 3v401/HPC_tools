@@ -3,7 +3,7 @@ import sys
 import shutil                                                                                                        
                                                                                                                      
 ###############################################################                                                      
-# Input interactive data: (Not finished)                                                                             
+# Input interactive data: (Finished)                                                                             
 
 modules = input("Introduce the correct names and versions of the modules you want to load, e.g. DWave/6.8.0 \n")
 print(f"Modules introduced: {modules}\n")
@@ -37,7 +37,7 @@ elif suffix=="jusuf":
 print(f"The partitions used for {hostname} will be: {partitions}\n")
 
 ################################################################
-# Prepare the slurm jobs (opens the files and adds specific instructions)
+# Prepare the slurm jobs. Opens the files, creates backup files, adds specific instructions: (Finished)
 
 def edit_job_file(filename, partition, modules, test_script):
     backup_filename = filename + ".bak"
@@ -75,7 +75,7 @@ def show_edited_file(filename):
         print(file.read())
 
 #################################################################
-# Run jobs for those partitions: (Not finished)
+# Run jobs for specific partitions: (Finished)
 
 def run_command(command):
     try:
