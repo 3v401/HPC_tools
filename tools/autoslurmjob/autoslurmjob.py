@@ -1,9 +1,9 @@
-import subprocess
-import sys
-import shutil
-
-###############################################################
-# Input interactive data: (Not finished)
+import subprocess                                                                                                    
+import sys                                                                                                           
+import shutil                                                                                                        
+                                                                                                                     
+###############################################################                                                      
+# Input interactive data: (Not finished)                                                                             
 
 modules = input("Introduce the correct names and versions of the modules you want to load, e.g. DWave/6.8.0 \n")
 print(f"Modules introduced: {modules}\n")
@@ -87,40 +87,36 @@ def run_command(command):
 def main():
 
     print("Running CPU simulation...\n")
-    for partition in partitions:
 
-        edit_job_file("./cpu/cpu.job", partition, modules, "./cpu/cpu_script.py")
-        print("Edited cpu.job file for {} is: \n".format(partition))
-        show_edited_file("./cpu/cpu.job")
-        run_command("sbatch ./cpu/cpu.job") # El outcome del comando no hace prompt, mira como hacerlo
-        restore_original_file("./cpu/cpu.job")
+    edit_job_file("./cpu/cpu.job", partitions[0], modules, "./cpu/cpu_script.py")
+    print("Edited cpu.job file for {} is: \n".format(partitions[0]))
+    show_edited_file("./cpu/cpu.job")
+    run_command("sbatch ./cpu/cpu.job") # El outcome del comando no hace prompt, mira como hacerlo
+    restore_original_file("./cpu/cpu.job")
 
     print("Running CPU distributed simulation...\n")
-    for partition in partitions:
 
-        edit_job_file("./cpu_mpi/cpu_mpi.job", partition, modules, "./cpu_mpi/cpu_mpi_script.py")
-        print("Edited cpu_mpi.job file for {} is: \n".format(partition))
-        show_edited_file("./cpu_mpi/cpu_mpi.job")
-        run_command("sbatch ./cpu_mpi/cpu_mpi.job")
-        restore_original_file("./cpu_mpi/cpu_mpi.job")
+    edit_job_file("./cpu_mpi/cpu_mpi.job", partitions[0], modules, "./cpu_mpi/cpu_mpi_script.py")
+    print("Edited cpu_mpi.job file for {} is: \n".format(partitions[0]))
+    show_edited_file("./cpu_mpi/cpu_mpi.job")
+    run_command("sbatch ./cpu_mpi/cpu_mpi.job")
+    restore_original_file("./cpu_mpi/cpu_mpi.job")
 
     print("Running GPU simulation...\n")
-    for partition in partitions:
         
-        edit_job_file("./gpu/gpu.job", partition, modules, "./gpu/gpu_script.py")
-        print("Edited gpu.job file for {} is: \n".format(partition))
-        show_edited_file("./gpu/gpu.job")
-        run_command("sbatch ./gpu/gpu.job")
-        restore_original_file("./gpu/gpu.job")
+    edit_job_file("./gpu/gpu.job", partitions[1], modules, "./gpu/gpu_script.py")
+    print("Edited gpu.job file for {} is: \n".format(partitions[1]))
+    show_edited_file("./gpu/gpu.job")
+    run_command("sbatch ./gpu/gpu.job")
+    restore_original_file("./gpu/gpu.job")
 
     print("Running GPU distributed simulation...\n")
-    for partition in partitions:
     
-        edit_job_file("./gpu_mpi/gpu_mpi.job", partition, modules, "./gpu_mpi/gpu_mpi_script.py")
-        print("Edited gpu_mpi.job file for {} is: \n".format(partition))
-        show_edited_file("./gpu_mpi/gpu_mpi.job")
-        run_command("sbatch ./gpu_mpi/gpu_mpi.job")
-        restore_original_file("./gpu_mpi/gpu_mpi.job")
+    edit_job_file("./gpu_mpi/gpu_mpi.job", partitions[1], modules, "./gpu_mpi/gpu_mpi_script.py")
+    print("Edited gpu_mpi.job file for {} is: \n".format(partitions[1]))
+    show_edited_file("./gpu_mpi/gpu_mpi.job")
+    run_command("sbatch ./gpu_mpi/gpu_mpi.job")
+    restore_original_file("./gpu_mpi/gpu_mpi.job")
 
 if __name__ == "__main__":
     main()
