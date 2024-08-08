@@ -18,6 +18,6 @@ In this example, we demonstrate running tests on the JURECA machine using the Qu
 
 ![alt text](pics/pic2.png)
 
-4. **Check the Outcome**: As expected, the prompt shows 16 salutations because we set --ntasks=4 and --nodes-per-task=4:
+4. **Check the Outcome**: As expected, the prompt shows 16 salutations because we set --ntasks=4 and --nodes-per-task=4 for `cpu_mpi` simulation:
 
 ![alt text](pics/pic3.png)
