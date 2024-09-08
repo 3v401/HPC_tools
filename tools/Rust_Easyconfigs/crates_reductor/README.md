@@ -2,7 +2,7 @@ When developing a Rust-based EasyConfig for HPC systems with EasyBuild, managing
 In large repositories, like the 'qoqo-quest' repository, managing these crates becomes complex. The 'qoqo-quest' repository, for instance, contains 468 crates extensions, but only 293 of these are unique, leading to a need of automated process for efficient management and removal of duplicates.
 Doing this by hand can take a cost of one day or two, and with this automated program it takes less than 4 seconds. The **reduction of time cost is of 99.998%**.
 
-The 'crates' must be obtaine from the following files: [Cargo_qoqo-quest_1-14-4a3.lock](https://github.com/HQSquantumsimulations/qoqo-quest/blob/v0.14.4-alpha.3/Cargo.lock), [Cargo_qoqo_1-15-2a3.lock](https://github.com/HQSquantumsimulations/qoqo/blob/v1.15.2-alpha.3/Cargo.lock), [Cargo_qoqo_calculator_1-2-4.lock](https://github.com/HQSquantumsimulations/qoqo_calculator/blob/v1.2.4/Cargo.lock)
+The 'crates' must be obtained from the following files: [Cargo_qoqo-quest_1-14-4a3.lock](https://github.com/HQSquantumsimulations/qoqo-quest/blob/v0.14.4-alpha.3/Cargo.lock), [Cargo_qoqo_1-15-2a3.lock](https://github.com/HQSquantumsimulations/qoqo/blob/v1.15.2-alpha.3/Cargo.lock), [Cargo_qoqo_calculator_1-2-4.lock](https://github.com/HQSquantumsimulations/qoqo_calculator/blob/v1.2.4/Cargo.lock)
 
 The structure of these files demonstrate the tedious work the developer is against. Doing the process by hand is a no-zone. Let's explain the 'crates_reductor' tool.
 
