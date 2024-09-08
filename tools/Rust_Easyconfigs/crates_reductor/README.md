@@ -1,7 +1,17 @@
-When developing a Rust-based easyconfig for HPC systems with easybuild, there is a parameter that is very time consuming. That is the 'crates' parameter. Usually a repository contains several 'crates', for example 'maturin' or 'qoqo-quest'.
+When developing a Rust-based EasyConfig for HPC systems with EasyBuild, managing the 'crates' parameter can be particularly time-consuming. Repositories often contain multiple crates (such as 'maturin' or 'qoqo-quest'), each with different versions and dependencies and many times repeated.
+In large repositories, like the 'qoqo-quest' repository, managing these crates becomes complex. The 'qoqo-quest' repository, for instance, contains 468 crates extensions, but only 293 of these are unique, leading to a need of automated process for efficient management and removal of duplicates.
+Doing this by hand can take a cost of one day or two, and with this automated program it takes less than 4 seconds. The **reduction of time cost is of 99.998%**.
 
-For this repository use as example the 'qoqo-quest' module to retrieve such 'crates' extensions. This is a very convinient example because the repository contains 468 extensions from which only 293 are unique. How to find the unique extension names and versions in an automated way? For that is 'crates_reductor'. This repository:
+### Steps
 
-1. Takes as input all .lock files that 'qoqo-quest' repository needs and saves its crates extensions into a .txt file
-2. Opens 'crates_list.txt' file and removes duplicates. This second step:
-3. Prompts reduced crates list. Reduced the number of Rust extension calls from 468 to 293.
+1. The 'crates_reductor.py' tool processes all '.lock' files from the 'qoqo-quest' repository, extracting their crates extensions and saving them into a 'crates_list.txt' file.
+
+ 2. In second step reads the 'crates_list.txt' file and processes the names and versions line by line. This step:
+    i. If both name and version are the same, deletes common entries and only keeps one.
+    ii. If name is the same and versions are different, saves them.
+    iii. If both name and version are different, saves them.
+
+The goal of this step is to eliminate duplicate dependencies while preserving necessary variations.
+
+3. The tool outputs a reduced crates list, cutting down Rust extension calls from 468 to 293, **significantly optimizing** the module development process.
+
