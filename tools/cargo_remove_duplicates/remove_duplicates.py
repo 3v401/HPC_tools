@@ -2,6 +2,7 @@ import sys
 import ast
 
 def remove_duplicates(crates):
+    # Use an ordered dictionary to maintain the order while removing duplicates
     seen = set()
     unique_crates = []
     for crate in crates:
