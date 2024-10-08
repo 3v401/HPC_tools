@@ -42,7 +42,9 @@ def main():
 
     print("The exts_list required for the easyconfig is:")
     for key, value in exts_list.items():
-        print(f"{key} {value}")
+        # If value has content
+        if value:
+            print(f"{key} {value}")
 
 if __name__ == "__main__":
     main()
