@@ -40,3 +40,22 @@ The container will start ... (explain the process).
 Once downloaded, move to `cd $SCRATCH/jureca_containers` and activate a shell by doing:
 `apptainer shell jax.sif`. You will get a terminal like the following. You will see that you have the container active.
 (pic1)
+Nonetheless, this container doesn't have access to EasyBuild features because is an isolated environment. How do we link the libraries, folders and declare the necessary variables to make EasyBuild work in out container as well?
+
+#### Declaration
+
+After a deep study on how to link all the necessary files, folders and declaring the necessary variables (through an iterative process interpreting the error prompts) we come up with the final command to activate the shell container linked with the easybuild required files:
+
+```
+apptainer shell --bind /p/software/jurecadc/lmod:/p/software/jurecadc/lmod \
+                --bind /p/software/default/stages:/p/software/default/stages \
+                --bind /p/software/default/userinstallations:/p/software/default/userinstallations \
+                --bind /usr/bin/lua:/usr/bin/lua \
+                --bind /usr/lib64/liblua-5.4.so:/usr/lib64/liblua-5.4.so \
+                --bind /usr/lib64/lua:/usr/lib64/lua \
+                --bind /usr/share/lua:/usr/share/lua \
+                --bind /usr/lib64/libcrypt.so.2:/usr/lib64/libcrypt.so.2 \
+                jax.sif
+```
+
+Note: Jax container and jureca use the same /usr/lib64/ folder, so linking the complete folder generates an error overwriting content in the jax folder. To avoid such error, the contents necessary from jureca in the usr/lib64 folder are linked into the jax container, for example, in this case is `/usr/lib64/liblua-5.4.so`.
