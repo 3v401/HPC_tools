@@ -59,3 +59,22 @@ apptainer shell --bind /p/software/jurecadc/lmod:/p/software/jurecadc/lmod \
 ```
 
 Note: Jax container and jureca use the same /usr/lib64/ folder, so linking the complete folder generates an error overwriting content in the jax folder. To avoid such error, the contents necessary from jureca in the usr/lib64 folder are linked into the jax container, for example, in this case is `/usr/lib64/liblua-5.4.so`.
+
+Once the shell is activated, declare the following variables:
+
+```
+export LMOD_DIR=/p/software/jurecadc/lmod/8.7.49/libexec
+export LMOD_CMD=$LMOD_DIR/lmod
+export MODULEPATH=/p/software/default/stages/2025/UI/Toolchains:/p/software/default/stages/2025/UI/Defaults:/p/software/default/stages/2025/UI/Tools:/p/software/default/stages/2025/UI/Compilers:/p/software/default/otherstages:/p/software/default/supercomputer_modules:/p/software/default/productionstages:/p/software/default/userinstallations:/p/software/default/devel
+export PATH=$LMOD_DIR:$PATH
+export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
+```
+
+Why the following declarations?
+(explain why bindings of those paths and declarations of those libraries)
+
+After executing these commands, you observe that you can load any module you want:
+(pic2)
+(Comentario: Los pics_beta son guias, esos screenshots hazlos en buenas condiciones)
+
+You can get the .sh file in this folder. Activate execution permissions by typing `chmod +x apptainer.sh`.
