@@ -10,4 +10,17 @@ Containers encapsulate everything an application needs to run (libraries, tools.
 Containerization is used for software development, deployment, microservices architecture, high-performance computing, data sciente, machine learning...
 Benefits:
   1. Portability: You can run containers consistently accross different platforms (local, cloud or on-premises)
-  2. Efficiency: 
+  2. Efficiency: Containers use fewer resources than VMs because they share the host system's OS kernel.
+  3. Scalability: Containers can easily be scaled horizontally using orchestration tools like Kubernetes.
+
+Cons:
+  1. Limited isolation: As they share the host OS kernel, security risk are higher compared to VMs.
+  2. Complex Networking: Configuring and managing container networks can be challenging
+  3. Storage management: Persistent storage for containers require additional setup.
+
+Most used container technologies
+
+Docker, Kubernetes, Podman and Singularity (now Apptainer) are the most used container technologies. Docker is the most populat containerization platform. Singularity is specifically designed for scientific and HPC environments. It emphasizes reproducibility and security.
+
+Singularity (Now Apptainer)
+
