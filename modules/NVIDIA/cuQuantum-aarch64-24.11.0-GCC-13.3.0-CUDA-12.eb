@@ -1,4 +1,4 @@
-# Module for JEDI system (aarch64 arquitecture). NVIDIA does not provide open source installation:
+# Module for JEDI system (aarch64 arquitecture). NVIDIA does not provide open source installation for 'aarch64' architecture:
 # https://developer.nvidia.com/cuquantum-downloads?target_os=Linux
 
 easyblock = 'PythonBundle'
