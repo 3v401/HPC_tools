@@ -87,16 +87,20 @@ def create_comparison_dict(module_path, module_names):
 
 # Create comparison dictionary
 comparison_dict = create_comparison_dict(module_path, module_names)
-    
-    
+ 
 if instruction == '1':
     print("You selected: modules that share SAME package name with DIFFERENT version.")
+    found = False
+    # False flag to check if there are packages with collisions
     for package, versions in comparison_dict.items():
         if len(set(versions.values())) > 1 and len(set(versions.keys())) != 1:
             # set: removes duplicates
             # If the number of duplicates is > 1 in version.values() -> Versions are not the same
             # If the number of duplicates is != 1 in version.keys() -> There is more than one module that uses this package
             print(f"{package}: {versions}")
+            found = True
+    if not found:
+        print("There are no library collision versions between these modules.")
 elif instruction == '2':
     print("You selected: modules that share the SAME package name with SAME version.")
     for package, versions in comparison_dict.items():
