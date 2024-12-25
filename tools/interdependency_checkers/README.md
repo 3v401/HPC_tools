@@ -1,4 +1,4 @@
-Interdependency checker tutorial and example
+## Interdependency checker tutorial and example
 
 When developing modules for the JUNIQ platform, it is essential to ensure that no interdependency collisions exist between the libraries used by different modules. To streamline this process, `interdependency_checker.py` was created, a Python script designed to analyze and compare extension packages across multiple modules. Any number of .txt files can be introduced into the python script identifying version mismatches, common packages between modules, and unique dependencies, helping to maintain a consistent and conflict-free environment.
 
@@ -8,7 +8,7 @@ This tool *drastically reduces work time* required to analyze and resolve interd
 2. Look for modules that share same package names and same version.
 3. Look for modules that share different package names (that are unique to each module).
 
-#### Example
+### Example
 
 Let's run an example with interdependency_checker.py. Let's compare three modules: PyQuil, Pulser, and DWave. This example will showcase how the tool identifies interdependency collisions, unique extensions, and common package names + versions.
 
@@ -44,7 +44,15 @@ and follow the commands described in the images:
 
 pic1
 
-As it can be observes, no interdependency collisions were found.
+As it can be observed, no interdependency collisions were found.
 
 pic2
+
+It can be observed with instruction `2` the modules that share the same package with same version.
+
+pic3
+
+It can be observed with instruction `3` the modules that share different package name.
+
+#### Finding interdependency collision
 
