@@ -56,3 +56,8 @@ It can be observed with instruction `3` the modules that share different package
 
 #### Finding interdependency collision
 
+Open the dwave.txt file by `vim dwave.txt` and edit the numpy version (1.25.1 --> 1.26.1). Save and exit. Run the `python3 interdependency_checker.py`, choose the three .txt files and run instruction 1:
+
+pic4
+
+As expected, there is an interdependency collision in numpy package! 😃👍
