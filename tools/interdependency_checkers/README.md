@@ -12,6 +12,8 @@ This tool *drastically reduces work time* required to analyze and resolve interd
 
 Let's run an example with interdependency_checker.py. Let's compare three modules: PyQuil, Pulser, and DWave. This example will showcase how the tool identifies interdependency collisions, unique extensions, and common package names + versions.
 
+![alt text](pics/pic1.png)
+
 To further validate its effectiveness, we will intentionally edit the pip list output for DWave at the end to create a version mismatch for numpy package (1.25.1 --> 1.26.1) with the other modules. By running this script, we will observe how it accurately detects and flags differing versions for the same package name (numpy).
 
 Run the following commands:
@@ -42,15 +44,15 @@ python3 interdependency_checker.py
 
 and follow the commands described in the images:
 
-pic1
+![alt text](pics/pic2.png)
 
 As it can be observed, no interdependency collisions were found.
 
-pic2
+![alt text](pics/pic3.png)
 
 It can be observed with instruction `2` the modules that share the same package with same version.
 
-pic3
+![alt text](pics/pic4.png)
 
 It can be observed with instruction `3` the modules that share different package name.
 
@@ -58,6 +60,6 @@ It can be observed with instruction `3` the modules that share different package
 
 Open the dwave.txt file by `vim dwave.txt` and edit the numpy version (1.25.1 --> 1.26.1). Save and exit. Run the `python3 interdependency_checker.py`, choose the three .txt files and run instruction 1:
 
-pic4
+![alt text](pics/pic5.png)
 
 As expected, there is an interdependency collision in numpy package! 😃👍
