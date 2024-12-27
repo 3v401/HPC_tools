@@ -38,11 +38,11 @@ To get the jax container we need to access the site [Link](https://catalog.ngc.n
 Once downloaded, activate a shell by doing:
 `apptainer shell jax.sif`. You will get a terminal like the following. You will see that you have the container active.
 
-(pic1)
+![alt text](pics/pic1.png)
 
 Nonetheless, this container doesn't have access to EasyBuild features because is an isolated environment. How do we link the libraries, folders and declare the necessary variables to make EasyBuild work in our container as well?
 
-(pic2)
+![alt text](pics/pic2.png)
 
 #### Declaration
 
@@ -76,22 +76,22 @@ export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
 
 These bind commands are used to map files or directories from the host system into the container's environment. Software like lmod, or capabilities like stages or userinstallations need to be available into the container as well as lua. In order for the container to work properly not only the bindings are necessry but the declaration of variables. LMOD_CMD, LMOD_DIR, MODULEPATH... are variables that are loaded in JURECA and must be declared within the container too. After executing these commands, you observe that you can load any module you want:
 
-(pic3)
+![alt text](pics/pic3.png)
 
 ##### Install jax with Python 3.12 inside container:
 
 After being able to use EasyBuild in the container, we will:
 
-1. Download and install uv, a tool to create isolated virtual environments.
-2. Activate uv:
-3. Load required modules:
-4. Create and activate new virtual environment:
-5. Configure hardlinking behaviour:
-6. Install jax and dependencies:
-7. Check Python setup:
-8. Check where jax is installed:
+1. Download and install uv, a tool to create isolated virtual environments: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+4. Activate uv: `source $HOME/.local/bin/env`
+5. Load required modules: `module load GCCcore/.13.3.0 poetry/.1.8.3 CMake/3.29.3 maturin/.1.6.0 Rust/1.78.0 Python/3.12.3 SciPy-bundle/2024.05 dill/0.3.9 networkx/3.3 tqdm/4.66.5 matplotlib/3.9.2 IPython/8.27.0 setuptools-rust/.1.9.0 qutip/5.0.4 imkl/2024.2.0`
+6. Create and activate new virtual environment: `uv venv jax_volume/myenv1`, `source jax_volume/myenv1/bin/activate`
+7. Configure hardlinking behaviour: `export UV_LINK_MODE=copy`
+8. Install jax and dependencies: `uv pip install --link-mode=copy jaxlib jax numpy==1.26.4 scipy==1.13.1`
+9. Check Python setup:
+10. Check where jax is installed:
 
-(pic4)
+![alt text](pics/pic4.png)
 
 Observe that the jax container was built for Python 3.10. Using this process we obtained a container for Python 3.12 (the one from JURECA Stages/2025).
 To run it in an automated way, download the .sh file, activate it with `chmod +x apptainer.sh` and execute it with `./apptainer.sh`.
