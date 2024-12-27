@@ -3,7 +3,7 @@ In this example we are going to develop a jax container and set the configuratio
 # What is Containerization?
 
 Containerization is a form of virtualization that packages an application with all its dependencies into a single unit (the container).
-Unline Virtual Machines (VMs), containers share the host system's kernel (in this case, JURECA) and hence being these much faster to start, smaller in size and more efficient in resource usage.
+Unlike Virtual Machines (VMs), containers share the host system's kernel (in this case, JURECA) and hence being these much faster to start, smaller in size and more efficient in resource usage.
 
 Containers encapsulate everything an application needs to run (libraries, tools...).
 
@@ -20,11 +20,11 @@ Containerization is used for software development, deployment, microservices arc
 
 ## Most used container technologies
 
-Docker, Kubernetes, Podman and Singularity (now Apptainer) are the most used container technologies. Docker is the most populat containerization platform. Singularity is specifically designed for scientific and HPC environments. It emphasizes reproducibility and security.
+Docker, Kubernetes, Podman and Singularity (now Apptainer) are the most used container technologies. Docker is the most popular containerization platform. Singularity is specifically designed for scientific and HPC environments. It emphasizes reproducibility and security.
 
 ## Singularity (Now Apptainer)
 
-Singularity/Apptainer is designed to address unique challenges faced in HPC such as security, preformance and integration with shared resources. It easily integrates with container technologies like Docker, enabling users to convert Docker images to a Singularity-compatible format. Supports integrations with schedulers like Slurm.
+Singularity/Apptainer is designed to address unique challenges faced in HPC such as security, performance and integration with shared resources. It easily integrates with container technologies like Docker, enabling users to convert Docker images to a Singularity-compatible format. Supports integrations with schedulers like Slurm.
 
 ### JAX container
 
@@ -32,15 +32,17 @@ To get the jax container we need to access the site [Link](https://catalog.ngc.n
 
   1. First, let's move to the folder $SCRATCH
   2. Create a folder where we will save our container `jureca_containers`
-  3. Run the following command:
+  3. Move `jureca_containers` and run the following command:
 `TMPDIR=$SCRATCH/jureca_containers apptainer pull $SCRATCH/jureca_containers/jax.sif docker://nvcr.io/nvidia/jax:24.10-maxtext-py3`
 
-The container will start ... (explain the process).
-
-Once downloaded, move to `cd $SCRATCH/jureca_containers` and activate a shell by doing:
+Once downloaded, activate a shell by doing:
 `apptainer shell jax.sif`. You will get a terminal like the following. You will see that you have the container active.
+
 (pic1)
-Nonetheless, this container doesn't have access to EasyBuild features because is an isolated environment. How do we link the libraries, folders and declare the necessary variables to make EasyBuild work in out container as well?
+
+Nonetheless, this container doesn't have access to EasyBuild features because is an isolated environment. How do we link the libraries, folders and declare the necessary variables to make EasyBuild work in our container as well?
+
+(pic2)
 
 #### Declaration
 
@@ -58,7 +60,7 @@ apptainer shell --bind /p/software/jurecadc/lmod:/p/software/jurecadc/lmod \
                 jax.sif
 ```
 
-Note: Jax container and jureca use the same /usr/lib64/ folder, so linking the complete folder generates an error overwriting content in the jax folder. To avoid such error, the contents necessary from jureca in the usr/lib64 folder are linked into the jax container, for example, in this case is `/usr/lib64/liblua-5.4.so`.
+Note: Jax container and JURECA use the same /usr/lib64/ folder, so linking the complete folder generates an error overwriting content in the jax folder. To avoid such error, the contents necessary from JURECA in the usr/lib64 folder are linked into the jax container, for example, in this case is `/usr/lib64/liblua-5.4.so`.
 
 Once the shell is activated, declare the following variables:
 
@@ -70,11 +72,12 @@ export PATH=$LMOD_DIR:$PATH
 export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
 ```
 
-Why the following declarations?
-(explain why bindings of those paths and declarations of those libraries)
+##### Why the following declarations?
 
-After executing these commands, you observe that you can load any module you want:
-(pic2)
+These bind commands are used to map files or directories from the host system into the container's environment. Software like lmod, or capabilities like stages or userinstallations need to be available into the container as well as lua. In order for the container to work properly not only the bindings are necessry but the declaration of variables. LMOD_CMD, LMOD_DIR, MODULEPATH... are variables that are loaded in JURECA and must be declared within the container too. After executing these commands, you observe that you can load any module you want:
+
+(pic3)
+
 (Comentario: Los pics_beta son guias, esos screenshots hazlos en buenas condiciones)
 
 You can get the .sh file in this folder. Activate execution permissions by typing `chmod +x apptainer.sh`.
