@@ -88,8 +88,8 @@ After being able to use EasyBuild in the container, we will:
 6. Create and activate new virtual environment: `uv venv jax_volume/myenv1`, `source jax_volume/myenv1/bin/activate`
 7. Configure hardlinking behaviour: `export UV_LINK_MODE=copy`
 8. Install jax and dependencies: `uv pip install --link-mode=copy jaxlib jax numpy==1.26.4 scipy==1.13.1`
-9. Check Python setup:
-10. Check where jax is installed:
+9. Check Python setup: `python --version`, `whereis python`
+10. Check where jax is installed: `python -c "import jax; print(jax.__version__)"`, `python3 -c "import jax; print(jax.__file__)"`
 
 ![alt text](pics/pic4.png)
 
