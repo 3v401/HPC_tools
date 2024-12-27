@@ -77,7 +77,7 @@ export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
 
 ##### Why the following declarations?
 
-These bind commands are used to map files or directories from the host system into the container's environment. Software like lmod, or capabilities like stages or userinstallations need to be available into the container as well as lua. In order for the container to work properly not only the bindings are necessry but the declaration of variables. LMOD_CMD, LMOD_DIR, MODULEPATH... are variables that are loaded in JURECA and must be declared within the container too. After executing these commands, you observe that you can load any module you want:
+These bind commands are used to map files or directories from the host system into the container's environment. Software like lmod, or capabilities like stages or userinstallations need to be available into the container as well as lua. Observe the last binding is related to a created folder (jax_volume), in such path is where the environment of jax compatible with Python 3.12 will be installed. In order for the container to work properly not only the bindings are necessary but the declaration of variables. LMOD_CMD, LMOD_DIR, MODULEPATH... are variables that are loaded in JURECA and must be declared within the container too. After executing these commands, you observe that you can load any module you want:
 
 ![alt text](pics/pic3.png)
 
