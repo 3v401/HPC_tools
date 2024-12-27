@@ -78,6 +78,20 @@ These bind commands are used to map files or directories from the host system in
 
 (pic3)
 
-(Comentario: Los pics_beta son guias, esos screenshots hazlos en buenas condiciones)
+##### Install jax with Python 3.12 inside container:
 
-You can get the .sh file in this folder. Activate execution permissions by typing `chmod +x apptainer.sh`.
+After being able to use EasyBuild in the container, we will:
+
+1. Download and install uv, a tool to create isolated virtual environments.
+2. Activate uv:
+3. Load required modules:
+4. Create and activate new virtual environment:
+5. Configure hardlinking behaviour:
+6. Install jax and dependencies:
+7. Check Python setup:
+8. Check where jax is installed:
+
+(pic4)
+
+Observe that the jax container was built for Python 3.10. Using this process we obtained a container for Python 3.12 (the one from JURECA Stages/2025).
+To run it in an automated way, download the .sh file, activate it with `chmod +x apptainer.sh` and execute it with `./apptainer.sh`.
