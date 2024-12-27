@@ -49,6 +49,8 @@ Nonetheless, this container doesn't have access to EasyBuild features because is
 After a deep study on how to link all the necessary files, folders and declaring the necessary variables (through an iterative process interpreting the error prompts) we come up with the final command to activate the shell container linked with the easybuild required files:
 
 ```
+export ACTUAL_PATH=${PWD}
+mkdir $ACTUAL_PATH/jax_volume
 apptainer shell --bind /p/software/jurecadc/lmod:/p/software/jurecadc/lmod \
                 --bind /p/software/default/stages:/p/software/default/stages \
                 --bind /p/software/default/userinstallations:/p/software/default/userinstallations \
@@ -57,6 +59,7 @@ apptainer shell --bind /p/software/jurecadc/lmod:/p/software/jurecadc/lmod \
                 --bind /usr/lib64/lua:/usr/lib64/lua \
                 --bind /usr/share/lua:/usr/share/lua \
                 --bind /usr/lib64/libcrypt.so.2:/usr/lib64/libcrypt.so.2 \
+                --bind ${ACTUAL_PATH}/jax_volume:/opt/volume \
                 jax.sif
 ```
 
