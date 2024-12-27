@@ -1,4 +1,4 @@
-In this example we are going to prepare a jax container that uses Python 3.12 and all our Stages/2025 packages instead of the prebuilt jax packages from NVIDIA NIM containers site (i.e., Python 3.10.12). We will set the configuration options compatible with our HPC system JURECA.
+In this example we are going to prepare a jax container that uses Python 3.12 and all our Stages/2025 packages instead of the prebuilt jax packages from a downloaded NVIDIA NIM containers site (i.e., Python 3.10.12). We will set the configuration options compatible with our HPC system JURECA.
 
 # What is Containerization?
 
