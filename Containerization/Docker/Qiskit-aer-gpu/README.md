@@ -60,4 +60,4 @@ Now we repeat the process but developing an easyconfig for JEDI, compiling the m
 
 Now we repeat the process but developing an easyconfig for JURECA, compiling the module and loading it. After loading, run the following script: `python test.py`
 
-Congratulations! Your docker container generated a whl file required for our Qiskit/1.2.4 module in `aarch64` architecture which is not available yet in PYPI!
+Congratulations!🥳 Your docker container generated a whl file required for our Qiskit/1.2.4 module in `aarch64` architecture which is not available yet in PYPI!
