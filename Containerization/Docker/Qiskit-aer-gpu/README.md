@@ -42,10 +42,22 @@ Connect to JEDI and run the following commands:
 1. Load basic modules: `module load Stages/2025 UserInstallations GCC/13.3.0 Python/3.12.3`
 2. Create Python environment: `python -m venv venv_jedi`
 3. Load environment: `source venv_jedi/bin/activate`
-4. Load modules required to install Qiskit (dependencies and builddependencies): ``
+4. Load modules required to install Qiskit (dependencies and builddependencies): `module load binutils/.2.42 CMake/3.29.3 Ninja/1.12.1 pkgconf/.2.2.0 pybind11/.2.12.0 Rust/1.78.0 maturin/.1.6.0 hatchling/.1.24.2 nlohmann_json/3.11.3 Python/3.12.3 SciPy-bundle/2024.05 sympy/1.13.2 dill/0.3.9 SymEngine-python/0.13.0 matplotlib/3.9.2 IPython/8.27.0 Seaborn/0.13.2 setuptools-rust/.1.9.0 h5py/3.12.1-serial PySCF/2.7.0 scikit-learn/1.5.2 CUDA/12 cuQuantum/24.11.0-CUDA-12 cuQuantum-Python/24.11.0-CUDA-12 scikit-build/0.17.6`
+5. Install qiskit, your whl file and the external dependencies required to be compatible with out HPC: `pip install setuptools==70.0.0 PyJWT==2.9.0 nvidia-nvjitlink-cu12==12.4.127 nvidia-cuda-runtime-cu12==12.4.127 nvidia-cublas-cu12==12.4.5.8 nvidia-cusparse-cu12==12.3.1.170 nvidia-cusolver-cu12==11.6.1.9 wheel==0.43.0 qiskit-ibm-provider qiskit-ibm-runtime  qiskit-algorithms qiskit-nature qiskit-machine-learning qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl qiskit==1.2.4`
 
 #### Test module
 
+1. Run the following script: `python test.py`
+
+
+If you get an outcome as follows, the qiskit_aer_gpu module works correctly locally on your HPC system.
+
 ###### JEDI
 
+Now we repeat the process but developing an easyconfig for JEDI, compiling the module and loading it. After loading, run the following script: `python test.py`
+
 ###### JURECA
+
+Now we repeat the process but developing an easyconfig for JURECA, compiling the module and loading it. After loading, run the following script: `python test.py`
+
+Congratulations! Your docker container generated a whl file required for our Qiskit/1.2.4 module in `aarch64` architecture which is not available yet in PYPI!
