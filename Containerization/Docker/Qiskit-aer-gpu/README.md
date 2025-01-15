@@ -9,8 +9,9 @@ We will test it locally and insert it into our easyconfig and test it from our H
 1. Check if Docker is running: `sudo systemctl status docker`
 2. If it is not running, start it: `sudo systemctl start docker`
 3. To allow your current user have permissions to interact with the Docker daemon run: `sudo usermod -aG docker $USER`
-4. Restart your sheel or reboot your laptop: `reboot`
-5. Test docker access: `docker run hello-world`
+(pic1)
+5. Restart your sheel or reboot your laptop: `reboot`
+6. Test docker access: `docker run hello-world`
 
 After installing and setting up Docker, it is necessary to abilitate the capability of simulate other architectures. Our current Docker engine uses `amd64` architecture (our laptop) and the intended whl file is for `aarch64` (JEDI). Docker cannot run `aarch64` binaries on `amd64` systems unless emulation is explicitly enabled. For that run the following:
 
