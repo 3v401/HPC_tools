@@ -24,6 +24,12 @@ After installing and setting up Docker, it is necessary to abilitate the capabil
 
 ##### Production of whl file
 
+After setting up the multi-architecture aarch64 container with Docker on my amd64 laptop, the steps can be followed by the container. Follow the commands:
+
+1. Activate the environment: `source qk_aer/bin/activate`
+2. Move to: `cd qiskit-aer`
+3. Run the build command tailoring it to `aarch64` GPU CUDA from JEDI. JURECA uses NVIDIA GH200 GPU and JEDI USES NVIDIA GH200, both use CUDA architecture `7.5`. It can be observed [here](https://developer.nvidia.com/cuda-gpus).
+
 #### Install whl file locally in a virtual environment
 
 #### Install whl file in JEDI and JURECA
