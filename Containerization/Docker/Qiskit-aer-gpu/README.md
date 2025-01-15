@@ -35,9 +35,14 @@ After setting up the multi-architecture aarch64 container with Docker on my amd6
 
 1. Identify the container ID: `docker ps`
 2. Copy the wheel into your host system (laptop): `docker cp <CONTAINER_ID>:/qiskit-aer/dist/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl ~/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl`
-3. 
 
 #### Install whl file in JEDI and JURECA
+
+Connect to JEDI and run the following commands:
+1. Load basic modules: `module load Stages/2025 UserInstallations GCC/13.3.0 Python/3.12.3`
+2. Create Python environment: `python -m venv venv_jedi`
+3. Load environment: `source venv_jedi/bin/activate`
+4. Load modules required to install Qiskit (dependencies and builddependencies): ``
 
 #### Test module
 
