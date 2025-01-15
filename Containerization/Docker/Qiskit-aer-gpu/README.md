@@ -34,7 +34,7 @@ After installing and setting up Docker, it is necessary to abilitate the capabil
 5. Run the Docker container: `docker run --platform linux/arm64 --rm -it aerbuilder /bin/bash`
 6. You will get the following terminal:
 
-(pic1)
+(pic6)
 
 ##### Production of whl file
 
