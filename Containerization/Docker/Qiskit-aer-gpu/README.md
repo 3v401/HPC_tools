@@ -19,11 +19,20 @@ We will test it locally and insert it into our easyconfig and test it from our H
 
 After installing and setting up Docker, it is necessary to abilitate the capability of simulate other architectures. Our current Docker engine uses `amd64` architecture (our laptop) and the intended whl file is for `aarch64` (JEDI). Docker cannot run `aarch64` binaries on `amd64` systems unless emulation is explicitly enabled. For that run the following:
 
-1. Install qwmu-user-static: `sudo apt install -y qemu-user-static`
+1. Update kali and install qwmu-user-static: `sudo apt update && sudo apt install -y qemu-user-static`
+
+(pic3)
+
 2. Enable multi-architecture support in Docker: `docker run --rm --privileged multiarch/qemu-user-static --reset -p yes`
-3. Specify the platform for building: `docker build --platform linux/arm64 -t aerbuilder .`
-4. Run the Docker container: `docker run --platform linux/arm64 --rm -it aerbuilder /bin/bash`
-5. You will get the following terminal:
+
+(pic4)
+   
+4. Specify the platform for building. It will take a while: `docker build --platform linux/arm64 -t aerbuilder .`
+
+(pic5)
+
+5. Run the Docker container: `docker run --platform linux/arm64 --rm -it aerbuilder /bin/bash`
+6. You will get the following terminal:
 
 (pic1)
 
