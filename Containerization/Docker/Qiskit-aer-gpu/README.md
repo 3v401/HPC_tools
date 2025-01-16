@@ -55,6 +55,8 @@ After setting up the multi-architecture aarch64 container with Docker on my amd6
 
 5. Repair the whl file to make it manylinux-compatible. To ensure it works on the HPC system, run auditwheel with the specified exclusions: `auditwheel repair --exclude libcudart.so.12 --exclude libcustatevec.so.1 --exclude libcutensornet.so.2 --exclude libcutensor.so.1 --exclude libcutensorMg.so.1 --exclude libcusolver.so.11 --exclude libcusolverMg.so.11 --exclude libcusolver.so.12 --exclude libcusolverMg.so.12 --exclude libcusparse.so.12 --exclude libcublas.so.12 --exclude libcublasLt.so.12 --exclude libnvJitLink.so.12 -w dist/ dist/qiskit_aer-0.15.1-cp312-cp312-linux_aarch64.whl`
 
+(pic10)
+
 #### Install whl file locally in a virtual environment
 
 1. Identify the container ID: `docker ps`
