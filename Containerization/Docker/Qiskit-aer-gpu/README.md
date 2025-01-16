@@ -78,10 +78,13 @@ Connect to JEDI, move to the folder where your qiskit_aer is located and run the
 
 #### Test module
 
-1. Run the following script: `python test.py`
+1. Run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
+(pic12)
 
-If you get an outcome as follows, the qiskit_aer_gpu module works correctly locally on your HPC system.
+If you get an outcome as follows, the qiskit_aer_gpu module works correctly locally on your HPC system. You should get a plot as follows:
+
+(plot)
 
 ###### JEDI
 
