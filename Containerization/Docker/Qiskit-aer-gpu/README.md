@@ -80,18 +80,18 @@ Connect to JEDI, move to the folder where your qiskit_aer is located and run the
 
 1. Run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
-(pic12)
+![alt text](pics/pic12.png)
 
 If you get an outcome as follows, the qiskit_aer_gpu module works correctly locally on your HPC system. You should get a plot as follows:
 
-(plot)
+![alt text](pics/plot.png)
 
 ###### JEDI
 
-Now we repeat the process but developing an easyconfig for JEDI, compiling the module and loading it. After loading, run the following script: `python test.py`
+Now we repeat the process but developing an easyconfig for JEDI, compiling the module and loading it. After loading, run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
 ###### JURECA
 
-Now we repeat the process but developing an easyconfig for JURECA, compiling the module and loading it. After loading, run the following script: `python test.py`
+Now we repeat the process but developing an easyconfig for JURECA, compiling the module and loading it. After loading, run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
 Congratulations!🥳 Your docker container generated a whl file required for our Qiskit/1.2.4 module in `aarch64` architecture which is not available yet in PYPI!
