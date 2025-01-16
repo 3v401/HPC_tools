@@ -64,11 +64,11 @@ After setting up the multi-architecture aarch64 container with Docker on my amd6
 
 ![alt text](pics/pic11.png)
 
-3. Send the file to your remote host via: `scp /path/to/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl <username>@<remote_host>:/path/to/locate/qiskit_aer
+3. Send the file to your remote host via: `scp /path/to/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl <username>@<remote_host>:/path/to/locate/qiskit_aer`
 
 #### Install whl file in JEDI and JURECA
 
-Connect to JEDI and run the following commands:
+Connect to JEDI, move to the folder where your qiskit_aer is located and run the following commands:
 
 1. Load basic modules: `module load Stages/2025 UserInstallations GCC/13.3.0 Python/3.12.3`
 2. Create Python environment: `python -m venv venv_jedi`
