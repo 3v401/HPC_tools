@@ -10,31 +10,31 @@ We will test it locally and insert it into our easyconfig and test it from our H
 2. If it is not running, start it: `sudo systemctl start docker`
 3. To allow your current user have permissions to interact with the Docker daemon run: `sudo usermod -aG docker $USER`
 
-(pic1)
+![alt text](pics/pic1.png)
 
 5. Restart your sheel or reboot your laptop: `reboot`
 6. Test docker access: `docker run hello-world`
 
-(pic2)
+![alt text](pics/pic2.png)
 
 After installing and setting up Docker, it is necessary to abilitate the capability of simulate other architectures. Our current Docker engine uses `amd64` architecture (our laptop) and the intended whl file is for `aarch64` (JEDI). Docker cannot run `aarch64` binaries on `amd64` systems unless emulation is explicitly enabled. For that run the following:
 
 1. Update kali and install qwmu-user-static: `sudo apt update && sudo apt install -y qemu-user-static`
 
-(pic3)
+![alt text](pics/pic3.png)
 
 2. Enable multi-architecture support in Docker: `docker run --rm --privileged multiarch/qemu-user-static --reset -p yes`
 
-(pic4)
+![alt text](pics/pic4.png)
    
 4. Specify the platform for building. It will take a while: `docker build --platform linux/arm64 -t aerbuilder .`
 
-(pic5)
+![alt text](pics/pic5.png)
 
 5. Run the Docker container: `docker run --platform linux/arm64 --rm -it aerbuilder /bin/bash`
 6. You will get the following terminal:
 
-(pic6)
+![alt text](pics/pic6.png)
 
 ##### Production of whl file
 
@@ -43,26 +43,26 @@ After setting up the multi-architecture aarch64 container with Docker on my amd6
 1. Activate the environment: `source qk_aer/bin/activate`
 2. Move to: `cd qiskit-aer`
 
-(pic7)
+![alt text](pics/pic7.png)
 
 3. Run the build command tailoring it to `aarch64` GPU CUDA from JEDI. JURECA uses NVIDIA GH200 GPU and JEDI USES NVIDIA GH200, both use CUDA architecture `7.5`. It can be observed [here](https://developer.nvidia.com/cuda-gpus): `python ./setup.py bdist_wheel -- -DAER_THRUST_BACKEND=CUDA -DAER_CUDA_ARCH="7.5" -DAER_PYTHON_CUDA_ROOT=/qk_aer`.
 
-(pic8)
+![alt text](pics/pic8.png)
   
 4. This command will create the .whl file in the `dist/` directory.
 
-(pic9)
+![alt text](pics/pic9.png)
 
 5. Repair the whl file to make it manylinux-compatible. To ensure it works on the HPC system, run auditwheel with the specified exclusions: `auditwheel repair --exclude libcudart.so.12 --exclude libcustatevec.so.1 --exclude libcutensornet.so.2 --exclude libcutensor.so.1 --exclude libcutensorMg.so.1 --exclude libcusolver.so.11 --exclude libcusolverMg.so.11 --exclude libcusolver.so.12 --exclude libcusolverMg.so.12 --exclude libcusparse.so.12 --exclude libcublas.so.12 --exclude libcublasLt.so.12 --exclude libnvJitLink.so.12 -w dist/ dist/qiskit_aer-0.15.1-cp312-cp312-linux_aarch64.whl`
 
-(pic10)
+![alt text](pics/pic10.png)
 
 #### Install whl file locally in a virtual environment
 
 1. Open a new terminal. Identify the container ID: `docker ps`
 2. Copy the wheel into your host system (laptop): `docker cp <CONTAINER_ID>:/qiskit-aer/dist/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl ~/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl`
 
-(pic11)
+![alt text](pics/pic11.png)
 
 #### Install whl file in JEDI and JURECA
 
