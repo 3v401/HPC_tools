@@ -59,8 +59,10 @@ After setting up the multi-architecture aarch64 container with Docker on my amd6
 
 #### Install whl file locally in a virtual environment
 
-1. Identify the container ID: `docker ps`
+1. Open a new terminal. Identify the container ID: `docker ps`
 2. Copy the wheel into your host system (laptop): `docker cp <CONTAINER_ID>:/qiskit-aer/dist/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl ~/qiskit_aer-0.15.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl`
+
+(pic11)
 
 #### Install whl file in JEDI and JURECA
 
