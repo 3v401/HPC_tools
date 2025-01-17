@@ -86,16 +86,18 @@ If you get an outcome as follows, the qiskit_aer_gpu module works correctly loca
 
 ![alt text](pics/plot.png)
 
-###### JEDI
+###### JEDI (aarch64)
 
 Now we repeat the process but developing an easyconfig ([here](https://github.com/3v401/HPC_tools/blob/main/modules/IBM/Qiskit-1.2.4-GCC-13.3.0.eb)) for JEDI, compiling the module and loading it. After loading, run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
 ![alt text](pics/pic14.png)
 
-###### JURECA
+###### JURECA (x86_64)
 
-Now we repeat the process but developing an easyconfig ([here](https://github.com/3v401/HPC_tools/blob/main/modules/IBM/Qiskit-1.2.4-GCC-13.3.0.eb)) for JURECA, compiling the module and loading it. After loading, run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
+Now we repeat the process but developing an easyconfig ([here](https://github.com/3v401/HPC_tools/blob/main/modules/IBM/Qiskit-1.2.4-GCC-13.3.0.eb)) for JURECA, compiling the module and loading it. For `x86_64` there is no issue so we use the qiskit-aer-gpu developed by IBM. After loading, run the following script: `python3 test_qiskit_aer_gpu_aarch64.py`
 
 ![alt text](pics/pic15.png)
+
+It can be observed that the results are very similar without inconsistencies/issues during the process.
 
 Congratulations!🥳 Your docker container generated a whl file required for our Qiskit/1.2.4 module in `aarch64` architecture which is not available yet in PYPI!
