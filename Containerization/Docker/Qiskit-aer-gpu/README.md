@@ -1,4 +1,4 @@
-## Post under development
+## Qiskit-aer (CPU + GPU capabilities)
 
 Containerization example Docker for Qiskit-aer-gpu.
 When developing the Qiskit/1.2.4 module for JUNIQ Stages/2025 we found out that extension library [qiskit-aer-gpu](https://pypi.org/project/qiskit-aer-gpu/#files) was not released for aarch64 architecture (JEDI). To avoid requesting a whl release, we use a Docker container built from scratch to create a whl file that contains qiskit-aer CPU and GPU capabilities.
