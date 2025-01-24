@@ -19,7 +19,10 @@ Look for files in a $PATH that contain a specific keyword inside:
 ```
 find $PATH -type f -exec grep --with-filename "*<keyword>*" {} +
 ```
-
+Patch creation:
+```
+diff -u <filename1> <filename2> > my_new_patch.patch
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
