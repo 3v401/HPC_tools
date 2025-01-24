@@ -7,6 +7,10 @@ To obtain the SHA256 checksum of a file:
 ```
 sha256sum <filename>
 ```
+Find a file:
+```
+find  $PATH -type f -name "*filename*"
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
