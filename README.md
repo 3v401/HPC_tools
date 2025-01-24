@@ -9,7 +9,11 @@ sha256sum <filename>
 ```
 Find a file:
 ```
-find  $PATH -type f -name "*filename*"
+find  $PATH -type f -name "*<filename>*"
+```
+Look for files in a $PATH with a specific keyword inside:
+```
+find $PATH -type f -name "*<filename>*" -exec grep --with-filename "*<keyword>*" {} +
 ```
 ## Links/Sources
 
