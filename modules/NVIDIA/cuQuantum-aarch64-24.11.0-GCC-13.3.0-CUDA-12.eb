@@ -20,12 +20,12 @@ simulations and it consists of two major components:
                  tensor network computations
 """
 
-toolchain = {'name': 'GCC', 'version': '13.3.0'}
+toolchain = {'name': 'gpsmpi', 'version': '2024a'}
 
 dependencies = [
-    ('binutils', '2.42'),
+    # GCC already includes binutils (gpsmpi comes from GCC + psmpi)
     ('CUDA', '12', '', SYSTEM),
-    ('psmpi', '5.10.0-1'),
+    # psmpi already included in toolchain (GCC + psmpi --> gpsmpi)
     ('Python', '3.12.3'),
 ]
 
@@ -65,7 +65,7 @@ exts_list = [
         'checksums': ['b68b279bae1d1e6d0688a371083ede4ede90d19ab5b1a4f9123a30db3e3317e9'],
     }),
 ]
-    
+
 sanity_check_paths = {
     'files': [
         'lib/python%(pyshortver)s/site-packages/cuquantum/lib/libcustatevec.so.1',
@@ -82,20 +82,24 @@ modextravars = {
     'CUSTATEVEC_ROOT': '%(installdir)s/lib/python%(pyshortver)s/site-packages/cuquantum/include',
     'CUTENSORNET_ROOT': '%(installdir)s/lib/python%(pyshortver)s/site-packages/cuquantum/include',
     'CUTENSOR_ROOT': '%(installdir)s/lib/python%(pyshortver)s/site-packages/cutensor',
-    'MPI_PATH': '/p/software/default/stages/2025/software/psmpi/5.10.0-1-GCC-13.3.0',
-    # CUTENSORNET_COMM_LIB and CUDENSITYMAT_COMM_LIB from not dev.source are created in cuQuantum-Python 24.11.0
+    'MPI_PATH': '$EBROOTMPI',
+    'CUTENSORNET_COMM_LIB': '%(installdir)s/distributed_interfaces/libcutensornet_distributed_interface_mpi.so',
 }
 
 # Required (only for prebuilt (.whl) installation) to link and activate libraries for compilation:
 
-postinstallcmds = [
-    "cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib && ln -s libcutensornet.so.2 libcutensornet.so",
-    "cd %(installdir)s/lib/python3.12/site-packages/cutensor/lib && ln -s libcutensor.so.2 libcutensor.so",
-    "cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib && ln -s libcudensitymat.so.0 libcudensitymat.so",
-    "cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib && ln -s libcustatevec.so.1 libcustatevec.so",
-    "cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib && chmod +x libcustatevec.so.1",
-    "cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib && chmod +x libcudensitymat.so.0",
-]
+local_postinstall = 'cd %(installdir)s/lib/python3.12/site-packages/cuquantum/lib \n'
+local_postinstall += 'ln -s libcutensornet.so.2 libcutensornet.so && ln -s libcudensitymat.so.0 libcudensitymat.so \n'
+local_postinstall += 'ln -s libcustatevec.so.1 libcustatevec.so \n'
+local_postinstall += 'chmod +x libcustatevec.so.1 && chmod +x libcudensitymat.so.0 \n'
+local_postinstall += 'cd %(installdir)s/lib/python3.12/site-packages/cutensor/lib \n'
+local_postinstall += 'ln -s libcutensor.so.2 libcutensor.so \n'
+local_postinstall += 'cd %(installdir)s/lib/python3.12/site-packages/cuquantum/distributed_interfaces/ \n'
+local_postinstall += 'chmod +x activate_mpi_cudm.sh && chmod +x activate_mpi_cutn.sh \n'
+local_postinstall += './activate_mpi_cutn.sh'
 
+postinstallcmds = [local_postinstall]
+
+modextrapaths = {'LD_LIBRARY_PATH': 'lib/python3.12/site-packages/cuquantum/lib'}
 
 moduleclass = 'quantum'
