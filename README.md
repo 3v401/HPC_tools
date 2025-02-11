@@ -32,6 +32,11 @@ EOF
 ```
 diff -u /dev/null <filename> > my_new_patch.patch
 ```
+Bring file from other branch:
+```
+git checkout <branch_name> -- path/to/file
+git add path/to/file
+```
 ##### Git
 Create new branch from commit X
 ```
