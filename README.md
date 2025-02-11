@@ -32,6 +32,15 @@ EOF
 ```
 diff -u /dev/null <filename> > my_new_patch.patch
 ```
+##### Git
+Create new branch from commit X
+```
+git checkout -b <branch_name> <commit_ID>
+```
+Show logs in graphical way:
+```
+git log --oneline --graph --decorate --all
+```
 
 ## Links/Sources
 
