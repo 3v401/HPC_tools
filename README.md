@@ -46,6 +46,10 @@ Show logs in graphical way:
 ```
 git log --oneline --graph --decorate --all
 ```
+Are sensitive files being tracked in history?
+```
+git ls-files | grep -E '\.pem$|\.tfstate$|\.auto\.tfvars$|\.key$|\.pub$'
+```
 
 ## Links/Sources
 
