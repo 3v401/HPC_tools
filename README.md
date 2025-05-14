@@ -37,6 +37,14 @@ Bring file from other branch:
 git checkout <branch_name> -- path/to/file
 git add path/to/file
 ```
+###### inodes (for disk-quota exceeded)
+```
+# Finds directories with most inodes in first level (faster than inodesDu)
+inodesFind() {
+  { find "$1" -xdev -printf '%h\n' | sort | uniq -c | sort -k 1 -n | tail -25; } 2>/dev/null
+}
+```
+Apply: `inodesFind <PATH_TO_EXPLORE>`
 ##### Git
 Create new branch from commit X
 ```
