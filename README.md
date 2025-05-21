@@ -1,3 +1,12 @@
+# Tools developed:
+
+1. [Rust Version Compatibility Checker for Git Projects]()
+2. [Rust Crates Reductor](https://github.com/3v401/HPC_tools/tree/main/tools/Rust_Easyconfigs/crates_reductor)
+3. [Automate slurm jobs on several HPC systems at once](https://github.com/3v401/HPC_tools/tree/main/tools/autoslurmjob)
+4. [Return pip installation list in order of installations with versions](https://github.com/3v401/HPC_tools/tree/main/tools/easyconfig_ext_list_settler)
+5. [Interdependency versions checker in environment](https://github.com/3v401/HPC_tools/tree/main/tools/interdependency_checkers)
+6. [Automated Kernel Builder](https://github.com/3v401/HPC_tools/tree/main/tools/kernel_builder)
+
 #### Useful commands:
 
 ```
