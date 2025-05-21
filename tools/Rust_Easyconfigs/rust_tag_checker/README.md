@@ -16,8 +16,6 @@ What this script does:
 1. Rust environment: `rustup install <VERSION_you_want_to_test>`
 2. Python3: `python3 rust_tag_checker.py`
 
-(pic1)
+![Alt text](pics/pic1.png)
 
-(pic2)
-
-(pic3)
+![Alt text](pics/pic2.png)
