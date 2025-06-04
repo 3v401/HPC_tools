@@ -46,6 +46,11 @@ Bring file from other branch:
 git checkout <branch_name> -- path/to/file
 git add path/to/file
 ```
+Agree with many file modifications/delets/addings in one command:
+```
+git add -u
+git commit -m "Your commit comment"
+```
 ###### inodes (for disk-quota exceeded)
 ```
 # Finds directories with most inodes in first level (faster than inodesDu)
