@@ -72,7 +72,11 @@ Are sensitive files being tracked in history?
 ```
 git ls-files | grep -E '\.pem$|\.tfstate$|\.auto\.tfvars$|\.key$|\.pub$'
 ```
-
+##### Crates generation. At root directory where Cargo.lock is located:
+```
+module load GCCcore/.13.3.0 Rust/1.78.0 Python-bundle-PyPI/2024.06
+python -m easybuild.easyblocks.generic.cargo .
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
