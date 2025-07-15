@@ -59,6 +59,11 @@ inodesFind() {
 }
 ```
 Apply: `inodesFind <PATH_TO_EXPLORE>`
+###### extension versions in private repo
+Retrieve available versions for python in a private repo:
+```
+python3 -m pip index versions <EXTENSION> --index-url https://token:<YOUR_TOKEN>@<PRIVATE_REPO_DOMAIN>/<PATH/TO/FILES>
+```
 ##### Git
 Create new branch from commit X
 ```
