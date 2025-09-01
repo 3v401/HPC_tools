@@ -6,6 +6,7 @@
 4. [Return pip installation list in order of installations with versions](https://github.com/3v401/HPC_tools/tree/main/tools/easyconfig_ext_list_settler)
 5. [Interdependency versions checker in environment](https://github.com/3v401/HPC_tools/tree/main/tools/interdependency_checkers)
 6. [Automated Kernel Builder](https://github.com/3v401/HPC_tools/tree/main/tools/kernel_builder)
+7. [HPC Crawler]() Create a tool that from a input.txt looks for all the extensions named 'word_row_i' to check if they are in the repo as dependency or module
 
 #### Useful commands:
 
