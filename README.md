@@ -78,6 +78,17 @@ Are sensitive files being tracked in history?
 ```
 git ls-files | grep -E '\.pem$|\.tfstate$|\.auto\.tfvars$|\.key$|\.pub$'
 ```
+##### Github
+Open PR:
+```
+gh pr create \
+  --repo <target_repository> \
+  --base <target_branch> \
+  --head <username>:<your_local_branch> \
+  --title "{moduleclass}[toolchain] <name> v<version> " \
+  --body "<Description>"
+```
+
 ##### Crates generation. At root directory where Cargo.lock is located:
 ```
 module load GCCcore/.13.3.0 Rust/1.78.0 Python-bundle-PyPI/2024.06
