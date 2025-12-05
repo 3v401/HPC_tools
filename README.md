@@ -56,6 +56,9 @@ Open remote shell on specific node `dc-gh` and setup easybuild:
 ```
 salloc -p dc-gh -A <PROJECTNAME> -t 05:00:00 --chdir=/p/project1/<PROJECTNAME> /bin/sh
 srun --pty /bin/bash --noprofile --norc
+ml --force purge
+unset $(env | grep EASYBUILD | cut -d= -f1)
+env | grep EASYBUILD
 source ~/gh200/setup.sh
 ```
 ###### inodes (for disk-quota exceeded)
