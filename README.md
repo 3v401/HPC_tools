@@ -52,6 +52,12 @@ Agree with many file modifications/delets/addings in one command:
 git add -u
 git commit -m "Your commit comment"
 ```
+Open remote shell on specific node `dc-gh` and setup easybuild:
+```
+salloc -p dc-gh -A <PROJECTNAME> -t 05:00:00 --chdir=/p/project1/<PROJECTNAME> /bin/sh
+srun --pty /bin/bash --noprofile --norc
+source ~/gh200/setup.sh
+```
 ###### inodes (for disk-quota exceeded)
 ```
 # Finds directories with most inodes in first level (faster than inodesDu)
