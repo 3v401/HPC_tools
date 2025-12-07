@@ -61,6 +61,10 @@ unset $(env | grep EASYBUILD | cut -d= -f1)
 env | grep EASYBUILD
 source ~/gh200/setup.sh
 ```
+Check queue of nodes:
+```
+squeue -p <NODENAME> -o "%.18i %.8u %.10M %.10l %.2t %.20R %.20b"
+```
 ###### inodes (for disk-quota exceeded)
 ```
 # Finds directories with most inodes in first level (faster than inodesDu)
