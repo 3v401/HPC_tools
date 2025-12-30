@@ -107,6 +107,12 @@ gh pr create \
 module load GCCcore/.13.3.0 Rust/1.78.0 Python-bundle-PyPI/2024.06
 python -m easybuild.easyblocks.generic.cargo .
 ```
+#### Terraform
+Run a full module reinitialization.
+```
+terraform init -reconfigure -upgrade
+terraform validate
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
