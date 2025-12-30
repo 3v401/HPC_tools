@@ -114,6 +114,11 @@ terraform init -reconfigure -upgrade
 terraform validate
 terraform apply
 ```
+##### AWS
+Get current user info
+```
+aws sts get-caller-identity
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
