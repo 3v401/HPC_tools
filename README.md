@@ -112,6 +112,7 @@ Run a full module reinitialization.
 ```
 terraform init -reconfigure -upgrade
 terraform validate
+terraform apply
 ```
 ## Links/Sources
 
