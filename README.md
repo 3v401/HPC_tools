@@ -111,6 +111,7 @@ python -m easybuild.easyblocks.generic.cargo .
 Run a full module reinitialization.
 ```
 terraform init -reconfigure -upgrade
+terraform fmt -recursive
 terraform validate
 terraform apply
 ```
