@@ -142,9 +142,13 @@ Get current user info
 ```
 aws sts get-caller-identity
 ```
-Ver archivos en S3:
+Check archives in S3:
 ```
 aws s3 ls s3://path/to/check/
+```
+Remove archives in S3:
+```
+aws s3 rm s3://path/to/file/2024-12-30.1.zip
 ```
 ## Links/Sources
 
