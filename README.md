@@ -142,6 +142,10 @@ Get current user info
 ```
 aws sts get-caller-identity
 ```
+Ver archivos en S3:
+```
+aws s3 ls s3://path/to/check/
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
