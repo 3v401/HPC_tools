@@ -118,7 +118,7 @@ terraform apply
 ##### Lambdas
 Convert .ts to .js for lambdas:
 ```
-esbuild index.ts \
+npx esbuild index.ts \
   --bundle \
   --platform=node \
   --target=node20 \
