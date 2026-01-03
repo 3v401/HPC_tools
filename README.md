@@ -131,7 +131,7 @@ zip stripe-webhook-2024-12-30.1.zip index.js
 Upload to S3:
 ```
 aws s3 cp stripe-webhook-2024-12-30.1.zip \
-  s3://justpickngo-artifacts-dev/stripe-webhook/2024-12-30.1.zip
+  s3://path/to/upload/2024-12-30.1.zip
 ```
 Check hash:
 ```
