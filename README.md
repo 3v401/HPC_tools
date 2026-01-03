@@ -115,6 +115,28 @@ terraform fmt -recursive
 terraform validate
 terraform apply
 ```
+##### Lambdas
+Convert .ts to .js for lambdas:
+```
+esbuild index.ts \
+  --bundle \
+  --platform=node \
+  --target=node20 \
+  --outfile=index.js
+```
+Convert .js to .zip
+```
+zip stripe-webhook-2024-12-30.1.zip index.js
+```
+Upload to S3:
+```
+aws s3 cp stripe-webhook-2024-12-30.1.zip \
+  s3://justpickngo-artifacts-dev/stripe-webhook/2024-12-30.1.zip
+```
+Check hash:
+```
+shasum -a 256 stripe-webhook-2024-12-30.1.zip
+```
 ##### AWS
 Get current user info
 ```
