@@ -155,6 +155,12 @@ Remove archives in S3:
 ```
 aws s3 rm s3://path/to/file/2024-12-30.1.zip
 ```
+###### Node.js
+Remove old files and build again:
+```
+rm -rf .next out
+npm run build
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
