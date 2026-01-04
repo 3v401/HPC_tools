@@ -115,6 +115,11 @@ terraform fmt -recursive
 terraform validate
 terraform apply
 ```
+Run terraform with *.tfvars:
+```
+terraform plan -var-file=dev.tfvars
+terraform apply -var-file=dev.tfvars
+```
 ##### Lambdas
 Convert .ts to .js for lambdas:
 ```
