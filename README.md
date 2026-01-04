@@ -163,9 +163,10 @@ aws cloudfront create-invalidation \
   --paths "/*"
 ```
 ###### Node.js
-Remove old files and build again:
+Remove old files, build environment variables (dev/prod) and build project again:
 ```
 rm -rf .next out
+export $(cat .env.build | xargs)
 npm run build
 ```
 ## Links/Sources
