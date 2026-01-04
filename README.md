@@ -155,6 +155,13 @@ Remove archives in S3:
 ```
 aws s3 rm s3://path/to/file/2024-12-30.1.zip
 ```
+Upload static dev frontend to S3:
+```
+aws s3 sync out/ s3://*-frontend-dev --delete
+aws cloudfront create-invalidation \
+  --distribution-id <CDN_ID> \
+  --paths "/*"
+```
 ###### Node.js
 Remove old files and build again:
 ```
