@@ -162,12 +162,17 @@ aws cloudfront create-invalidation \
   --distribution-id <CDN_ID> \
   --paths "/*"
 ```
-###### Node.js
+##### Node.js
 Remove old files, build environment variables (dev/prod) and build project again:
 ```
 rm -rf .next out
 export $(cat .env.build | xargs)
 npm run build
+```
+##### Bash
+Get SHA:
+```
+openssl dgst -sha256 -binary <FILENAME> | openssl base64
 ```
 ## Links/Sources
 
