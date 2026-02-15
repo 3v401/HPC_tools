@@ -174,6 +174,10 @@ Get SHA:
 ```
 openssl dgst -sha256 -binary <FILENAME> | openssl base64
 ```
+###### Fix Libre Office toolbar size:
+```
+SAL_FORCEDPI=192 libreoffice
+```
 ## Links/Sources
 
 1. Docker cheatsheet CLI: [Link](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
