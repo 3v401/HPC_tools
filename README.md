@@ -162,6 +162,10 @@ aws cloudfront create-invalidation \
   --distribution-id <CDN_ID> \
   --paths "/*"
 ```
+Create deployment API Gateway (when not `auto_deploy` since it is not safe in prod):
+```
+aws apigatewayv2 create-deployment     --api-id <API_ID>     --stage-name <STAGE_NAME>
+```
 ##### Node.js
 Remove old files, build environment variables (dev/prod) and build project again:
 ```
