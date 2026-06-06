@@ -155,9 +155,9 @@ Remove archives in S3:
 ```
 aws s3 rm s3://path/to/file/2024-12-30.1.zip
 ```
-Upload static dev frontend to S3:
+Upload static dev frontend to S3 (SSE-S3 better than KMS for static frontend):
 ```
-aws s3 sync out/ s3://*-frontend-dev --delete
+aws s3 sync out/ s3://*-frontend-dev --delete --sse AES256
 aws cloudfront create-invalidation \
   --distribution-id <CDN_ID> \
   --paths "/*"
