@@ -73,6 +73,15 @@ inodesFind() {
 }
 ```
 Apply: `inodesFind <PATH_TO_EXPLORE>`
+###### Active login node with SLURM for GPUs
+```
+salloc --account=<PROJECT> \
+       --partition=gpus \
+       --nodes=1 \
+       --gres=gpu:1 \
+       --time=hh:mm:ss
+srun --pty bash
+```
 ###### extension versions in private repo
 Retrieve available versions for python in a private repo:
 ```
