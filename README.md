@@ -82,6 +82,10 @@ salloc --account=<PROJECT> \
        --time=hh:mm:ss
 srun --pty bash
 ```
+###### ignore hook toolchain complain
+```
+J*C_OVERRIDE_TOOLCHAIN_CHECK=1
+```
 ###### extension versions in private repo
 Retrieve available versions for python in a private repo:
 ```
